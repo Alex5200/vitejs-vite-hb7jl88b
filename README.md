@@ -1,69 +1,36 @@
-# React + TypeScript + Vite
+# 🚀 Современное Приложение Список Задач
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Красивое и отзывчивое приложение для управления задачами, созданное с использованием React, TypeScript и Vite.
 
-Currently, two official plugins are available:
+![Скриншот приложения](/screenshot.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Возможности
 
-## Expanding the ESLint configuration
+- 📝 Добавление, редактирование и удаление задач
+- ✅ Отметка задач как выполненных
+- 🔄 Фильтрация задач (Все/Активные/Завершенные)
+- 🎨 Чистый и современный интерфейс с плавными анимациями
+- 📱 Полностью адаптивный дизайн
+- 💾 Сохранение данных в localStorage
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Технологии
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- ⚡ [Vite](https://vitejs.dev/) - Современный инструмент для фронтенд-разработки
+- ⚛️ [React 18](https://reactjs.org/) - JavaScript-библиотека для создания пользовательских интерфейсов
+- 📘 [TypeScript](https://www.typescriptlang.org/) - Типизированное надмножество JavaScript
+- 🎨 [Tailwind CSS](https://tailwindcss.com/) - CSS-фреймворк с утилитарными классами
+- 🧪 [Vitest](https://vitest.dev/) - Современный фреймворк для тестирования
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🚀 Начало работы
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Предварительные требования
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Node.js (версия 14 или выше)
+- npm или yarn
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Установка
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Клонируйте репозиторий
+   ```bash
+   git clone [https://github.com/ваш-ник/todo-app.git](https://github.com/ваш-ник/todo-app.git)
+   cd todo-app
