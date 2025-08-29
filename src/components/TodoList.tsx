@@ -18,15 +18,15 @@ const TodoList: React.FC<TodoListProps> = ({ todos, onToggle, filter }) => {
     return true;
   });
 
+  if (todos.length === 0) {
+    return null;
+  }
+
   return (
-    <ul className="space-y-1">
-      {filteredTodos.length === 0 ? (
-        <li className="text-gray-400 py-4 text-center">No tasks</li>
-      ) : (
-        filteredTodos.map((todo) => (
-          <TaskItem key={todo.id} todo={todo} onToggle={onToggle} />
-        ))
-      )}
+    <ul className="todo-list">
+      {filteredTodos.map((todo) => (
+        <TaskItem key={todo.id} todo={todo} onToggle={onToggle} />
+      ))}
     </ul>
   );
 };
