@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from '../App';
-import { act } from 'react-dom/test-utils';
 
 describe('Todo App', () => {
   test('should add a new task', () => {
