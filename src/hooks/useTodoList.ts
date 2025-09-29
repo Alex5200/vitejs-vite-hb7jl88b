@@ -32,7 +32,7 @@ export const useTodoList = () => {
     };
     setTodos((prev) => [...prev, newTodo]);
   };
-
+  const activeCount = todos.filter((todo) => !todo.completed).length;
   const toggleTodo = (id: string) => {
     setTodos((prev) => 
       prev.map((todo) => 
@@ -65,5 +65,6 @@ export const useTodoList = () => {
     toggleTodo,
     deleteCompleted,
     clearAll,
+    activeCount,
   };
 };
