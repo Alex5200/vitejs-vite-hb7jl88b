@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface Todo {
   id: string;
@@ -7,10 +7,21 @@ interface Todo {
 }
 
 export const useTodoList = () => {
-  const [todos, setTodos] = useState<Todo[]>(() => {
-    const saved = localStorage.getItem('todos');
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
+    const storedTodos = localStorage.getItem('todos');
+    if (storedTodos) {
+      try {
+        const todosFromStorage = JSON.parse(storedTodos);
+        setTodos(todosFromStorage);
+      } catch (error) {
+        console.error('Error loading todos from local storage:', error);
+      }
+    }
+    setIsInitialized(true);
+  }, []);
 
   const addTodo = (text: string) => {
     if (!text.trim()) return;
@@ -23,8 +34,8 @@ export const useTodoList = () => {
   };
 
   const toggleTodo = (id: string) => {
-    setTodos((prev) =>
-      prev.map((todo) =>
+    setTodos((prev) => 
+      prev.map((todo) => 
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
@@ -38,12 +49,15 @@ export const useTodoList = () => {
     setTodos([]);
   };
 
-  const activeCount = todos.filter((t) => !t.completed).length;
-
-  // Сохраняем в localStorage
-  const saveToStorage = () => {
-    localStorage.setItem('todos', JSON.stringify(todos));
-  };
+  useEffect(() => {
+    if (isInitialized) {
+      try {
+        localStorage.setItem('todos', JSON.stringify(todos));
+      } catch (error) {
+        console.error('Error saving todos to local storage:', error);
+      }
+    }
+  }, [todos, isInitialized]);
 
   return {
     todos,
@@ -51,7 +65,5 @@ export const useTodoList = () => {
     toggleTodo,
     deleteCompleted,
     clearAll,
-    activeCount,
-    saveToStorage,
   };
 };
